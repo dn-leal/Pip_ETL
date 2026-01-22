@@ -1,0 +1,10 @@
+import pandas as pd
+
+#esse pipeline é o primeiro, tem o intuito de carregar o dataset do brasileirão série A
+#reordenando os jogos por time e data.
+df = pd.read_csv('mundo_transfermarkt_competicoes_brasileirao_serie_a.csv')
+df['data'] = pd.to_datetime(df['data'])
+df.ordenado = df.sort_values(by=['time_mandante', 'data'], ascending=[True, True])
+df.ordenado.to_csv('brasileirao_serie_a_ordenado.csv', index=False)
+
+#index false para não salvar o index como uma coluna no csv novo.
